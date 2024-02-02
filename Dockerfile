@@ -10,7 +10,7 @@ ENV PYTHONDONTWRITEBYTECODE=TRUE
 ENV PATH="/opt/program:${PATH}"
 
 # By default, listen on port 5000
-# EXPOSE 5000/tcp
+EXPOSE 5000/tcp
 
 # Set the working directory in the container
 WORKDIR /opt/program
@@ -37,4 +37,4 @@ COPY ./src /opt/program
 
 # Specify the command to run on container start
 # CMD [ "python", "app.py" ]
-ENTRYPOINT ["gunicorn", "-b", ":8080", "app:app"]
+ENTRYPOINT ["gunicorn", "-b", "0.0.0.0:5000", "app:app"]
